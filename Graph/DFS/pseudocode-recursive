@@ -1,0 +1,5 @@
+procedure DFS(G, v):
+	label v as discovered
+		for all edges from v to w in G.adjacentEdges(v) do
+			if vertex w is not labeled as discovered then
+				recursively call DFS(G, w)

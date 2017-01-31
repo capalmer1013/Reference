@@ -1,0 +1,17 @@
+function BFS(G, root):
+	create empty set S
+	create empty queue Q
+	
+	root.parent = NIL
+	Q.enqueue(root)
+	
+	while Q is not empty:
+		current = Q.dequeue()
+		if current is the goal:
+			return current
+			
+			for each node n that is adjacent to current:
+				if n is not in S:
+					add n to s
+					n.parent = current
+					Q.enqueue(n)
