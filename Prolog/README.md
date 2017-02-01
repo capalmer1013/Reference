@@ -1,7 +1,7 @@
 # Prolog Notes
 
 ---
-
+[reference](http://www.learnprolognow.org/lpnpage.php?pagetype=html&pageid=lpn-htmlse1)
 ## Getting Started
 
 - obviously install swipl (now available on fedora :)
