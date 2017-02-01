@@ -139,3 +139,17 @@ B = suzie.
 ?-
 ```
 Asking prolog for human A who has parent B. The comma means *and*, indicating that both predicates need to be true, for the query to be true. Toe check this query, prolog will first find an instantiation to make the first predicate true
+
+
+- **anonymous variable** - underscore (_) character. Don't care how variable instantiated/ which term it's bound to, as long as it's bound to something.
+
+
+```prolog
+?- parent(A, _).
+
+A = david;
+A = john;
+A = suzie.
+
+?-
+```
