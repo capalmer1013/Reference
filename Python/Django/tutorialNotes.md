@@ -18,9 +18,7 @@ $ django-admin startproject mysite
 ```
 This will create a **mysite** directory in your current directory.
 
----
-Traditionally PHP and other code is put under the Web servers document root `/var/www`. We don't do that in Django. Other dirs are fine, such as `/home/mycode`
----
+> Traditionally PHP and other code is put under the Web servers document root `/var/www`. We don't do that in Django. Other dirs are fine, such as `/home/mycode`
 
 Here's what **startproject** created:
 ```
@@ -82,3 +80,37 @@ polls/
 	tests.py
 	views.py
 ```
+## Write your first view
+In the polls/views.py file write:
+```python
+from django.http import HttpResponse
+
+def index(request):
+	return HttpResponse("Hello, world. You're at the polls index.")
+```
+
+This is the simplest view possible in Djang. To call the view, we need to map it to a URL - and for this we need a URLconf. To create a URLconf in the polls directory, create a file called urls.py. Your app dir should look like this:
+```
+polls/
+	__init__.py
+	admin.py
+	apps.py
+	migrations/
+		__init__.py
+	models.py
+	tests.py
+	urls.py
+	views.py
+```
+
+Write this in polls/urls.py:
+```python
+from django.conf.urls import url
+
+from . import views
+
+urlpatterns = [
+	url(r'^$', views.index, name='index'),
+]
+```
+The next step is to point the root URLconf at the **polls.urls** module. In the **mysite/urls.py**, add an import for **django.conf.urls.include**
