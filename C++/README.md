@@ -1,4 +1,6 @@
 # C++ notes
+## Some good references
+[Open Source C++ books](https://www.ossblog.org/master-c-programming-with-open-source-books/)
 ---
 ## Pointers
 - **Address-of Operator (&)** - preceding the name of a variable with an ampersand (&) returns the address of the variable.
