@@ -2,6 +2,7 @@ import curses
 
 # global screen object
 stdscr = curses.initscr()
+curses.start_color()
 
 def initialize():
     # initialize application
@@ -25,8 +26,14 @@ def main():
     global stdscr
     running = True
     initialize()
+    curses.beep()
+    curses.init_pair(1, curses.COLOR_RED, curses.COLOR_CYAN)
+    #stdscr.addstr(0,0,"currentMode: typing mode", curses.A_UNDERLINE)
+    #stdscr.addstr(0,1,"Pretty Text", curses.color_pair(1))
+    stdscr.addstr(0,0, "RED ALERT!", curses.color_pair(1))
     while running:
         c = stdscr.getch()
+        stdscr.refresh()
         if c == ord('p'):
             print "hello"
         elif c == ord('q'):
