@@ -2,6 +2,8 @@ import curses
 import time
 import random
 
+# heres how you make a 64 bit seed
+'{0:064b}'.format(random.getrandbits(64))
 class character:
     def __init__(self, x, y, icon="O"):
         self.x = x
@@ -9,12 +11,18 @@ class character:
         self.nextX = 0
         self.nextY = 0
         self.icon = icon
+        self.lastMove = 0
+        self.speed = .1
 
     def moveX(self, magnitude):
-        self.nextX += magnitude
+        if time.time() - self.lastMove >= self.speed:
+            self.nextX += magnitude
+            self.lastMove = time.time()
 
     def moveY(self, magnitude):
-        self.nextY += magnitude
+        if time.time() - self.lastMove >= self.speed:
+            self.nextY += magnitude
+            self.lastMove = time.time()
 
     def draw(self, scr):
         scr.addch(self.y, self.x, " ")
@@ -22,11 +30,16 @@ class character:
         self.x = self.nextX
         self.y = self.nextY
 
-    def collision(self, listOfObjects):
+    def collision(self, listOfObjects, max_X=0, max_Y=0):
+        if max_X and max_Y:
+            if self.nextX == max_X or self.nextY == max_Y:
+                return True
+
         if (self.nextX, self.nextY) in listOfObjects:
             return True
         else:
             return False
+
     def undoMove(self):
         self.nextX = self.x
         self.nextY = self.y
@@ -49,10 +62,11 @@ def main(scr):
     running = True
     scr.nodelay(1)
     scr.border()
+    scr.timeout(1)
     curses.curs_set(0)
     curses.init_pair(1, curses.COLOR_GREEN, curses.COLOR_GREEN)
     max_y, max_x = scr.getmaxyx()
-    player = character(2, 2, curses.ACS_DIAMOND)
+    player = character(2, 2, "i")
     for _ in range(100):
         listOfObjects.append(wall(random.randint(2, max_x-1), random.randint(2, max_y-1),curses.ACS_BLOCK))
 
@@ -79,7 +93,6 @@ def main(scr):
         if player.collision(objectPos):
             player.undoMove()
 
-        #time.sleep(.05)
         player.draw(scr)
 
         for each in listOfObjects:
