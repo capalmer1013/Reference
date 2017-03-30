@@ -10,6 +10,7 @@
 ] if value in data pointer is nonzero jump to previous [
 """
 import sys
+DEBUG = False
 commands = ['>', '<', '+', '-', '.', ',', '[', ']']
 f = open(sys.argv[1])
 code = f.read()
@@ -28,14 +29,25 @@ instructionArray.append('end')
 
 ex = instructionArray[instructionPointer]
 
+def debug():
+    print ex
+    print "IP:",instructionPointer
+    print "DP:",dataPointer
+    print dataArray
+
 def errorLog():
     print "ex command", ex
     print "instruction pointer:", instructionPointer
     print "data pointer:", dataPointer
     print "instruction array:", ' '.join(instructionArray)
     print "data array", dataArray
+#errorLog()
 
 while ex != 'end':
+    if DEBUG:
+        debug()
+        raw_input()
+
     ex = instructionArray[instructionPointer]
 
     if ex == '>':
@@ -65,13 +77,33 @@ while ex != 'end':
 
     elif ex == '[':
         if dataArray[dataPointer] == 0:
-            while instructionArray[instructionPointer] != ']':
+            level = 1
+            instructionPointer += 1
+            while level != 0:
+                if instructionArray[instructionPointer] == '[':
+                    level += 1
+
+                if instructionArray[instructionPointer] == ']':
+                    level -= 1
+
                 instructionPointer += 1
+
+            continue
 
     elif ex == ']':
         if dataArray[dataPointer] != 0:
-            while instructionArray[instructionPointer] != '[':
+            level = 1
+            instructionPointer -= 1
+            while level != 0 :
+                if instructionArray[instructionPointer] == '[':
+                    level -= 1
+
+                if instructionArray[instructionPointer] == ']':
+                    level += 1
+
                 instructionPointer -= 1
+            instructionPointer += 1
+            continue
 
     elif ex == 'end':
         print ''
