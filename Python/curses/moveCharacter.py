@@ -57,6 +57,7 @@ class wall:
     def moved(self):
         return False
 
+
 def main(scr):
     listOfObjects = []
     objectPos = []
