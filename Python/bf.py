@@ -88,6 +88,7 @@ while ex != 'end':
 
                 instructionPointer += 1
 
+            instructionPointer -= 1
             continue
 
     elif ex == ']':
