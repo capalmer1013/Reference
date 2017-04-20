@@ -1,0 +1,90 @@
+<head>
+<link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" 
+integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" 
+crossorigin="anonymous">
+
+<style>
+.body{
+    padding-left: 2em;
+    padding-right: 2em;
+}
+</style>
+</head>
+
+<body>
+<div class="body">
+	<form action="/" method="post">
+  		Barcode: <input type="text" name="barcode"><br>
+  	<input type="submit" value="Submit">
+</div>
+</form>
+<table class="pure-table">
+    <thead>
+        <tr>
+            <th>Prod Desc</th>
+            <th>slotLabel</th>
+            <th>Prod UPC</th>
+            <th>qty Picked</th>
+            <th>qty Requested</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr class="pure-table-odd">
+            <td>1</td>
+            <td>Honda</td>
+            <td>Accord</td>
+            <td>2009</td>
+        </tr>
+
+        <tr>
+            <td>2</td>
+            <td>Toyota</td>
+            <td>Camry</td>
+            <td>2012</td>
+        </tr>
+
+        <tr class="pure-table-odd">
+            <td>3</td>
+            <td>Hyundai</td>
+            <td>Elantra</td>
+            <td>2010</td>
+        </tr>
+
+        <tr>
+            <td>4</td>
+            <td>Ford</td>
+            <td>Focus</td>
+            <td>2008</td>
+        </tr>
+
+        <tr class="pure-table-odd">
+            <td>5</td>
+            <td>Nissan</td>
+            <td>Sentra</td>
+            <td>2011</td>
+        </tr>
+
+        <tr>
+            <td>6</td>
+            <td>BMW</td>
+            <td>M3</td>
+            <td>2009</td>
+        </tr>
+
+        <tr class="pure-table-odd">
+            <td>7</td>
+            <td>Honda</td>
+            <td>Civic</td>
+            <td>2010</td>
+        </tr>
+
+        <tr>
+            <td>8</td>
+            <td>Kia</td>
+            <td>Soul</td>
+            <td>2010</td>
+        </tr>
+    </tbody>
+</table>
+</body
