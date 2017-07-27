@@ -5,3 +5,9 @@ I can't really decide what this would fall under, probably a hardware section if
 [How to Program USB devices](http://electronicdesign.com/boards/how-create-and-program-usb-devices#1)
 
 Here's an interesting link. It might mean I'm about to get into code Katas which are kinda a waste of time [link](https://adriann.github.io/programming_problems.html)
+
+The most important linux command:
+```
+find ./ -type f -exec dos2unix {} \;
+```
+replaces windows line endings with unix
