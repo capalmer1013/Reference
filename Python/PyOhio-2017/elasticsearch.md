@@ -4,3 +4,6 @@ be careful of finding things outside the top priority of elements
 - group
 - aggregate
 
+Them docs yo
+https://elasticsearch-py.readthedocs.io/en/master/
+
